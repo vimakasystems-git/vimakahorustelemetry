@@ -23,7 +23,4 @@ Endpoints:
 - Tempo OTLP HTTP: localhost:4318
 - Pyroscope: http://localhost:4040
 
-## Architecture
-Applications/Agents -> OpenTelemetry Collector -> metrics/logs/traces/profiles backends -> Grafana/custom UI -> correlation/AI/remediation.
-
-See `docs/ARCHITECTURE.md` and `blueprint/observability-blueprint.json`.
+See `docs/ARCHITECTURE.md`.
