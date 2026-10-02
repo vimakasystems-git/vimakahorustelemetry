@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Horus | Vimaka Telemetry</title><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside><a class="brand" href="#overview"><span class="mark">H</span><span>HORUS<small>VIMAKA TELEMETRY</small></span></a>
+    <nav aria-label="Navegacao principal"><a href="#overview">Vis&atilde;o geral</a><a href="#reliability">Confiabilidade</a><a href="#topology">Depend&ecirc;ncias</a><a href="#evidence">Evid&ecirc;ncias</a></nav>
+    <div class="aside-note">OpenTelemetry-first<br>Ambiente local &middot; v0.2</div>
+  </aside>
+  <main>
+    <header id="overview"><div><p class="eyebrow">CENTRAL DE OBSERVABILIDADE</p><h1>Enxergue o que acontece.</h1><p class="muted">Servi&ccedil;os, confiabilidade e diagn&oacute;stico com dados verific&aacute;veis.</p></div><span class="badge">MVP &middot; somente leitura</span></header>
+    <section class="panel connection"><form id="connect"><label for="token">Chave de acesso local</label><div class="inline"><input id="token" type="password" minlength="32" required autocomplete="off" placeholder="HORUS_API_TOKEN do arquivo .env"><button type="submit">Conectar</button></div><small>A chave permanece apenas na mem&oacute;ria desta aba. N&atilde;o &eacute; salva no navegador.</small></form></section>
+    <div class="toolbar"><div><label for="window">Janela de observa&ccedil;&atilde;o</label><select id="window"><option value="5m">5 minutos</option><option value="30m" selected>30 minutos</option><option value="1h">1 hora</option><option value="6h">6 horas</option><option value="24h">24 horas</option></select></div><div><label for="service">Servi&ccedil;o</label><select id="service"><option value="">Aguardando dados</option></select></div><button id="refresh" type="button" disabled>Atualizar</button></div>
+    <p id="status" role="status" aria-live="polite">Conecte para consultar a telemetria. Nenhum dado simulado &eacute; exibido.</p>
+    <section class="cards" aria-label="Indicadores"><article><span>Servi&ccedil;os observados</span><strong id="service-count">&mdash;</strong><small>Descobertos pelos spans de servidor</small></article><article><span>Disponibilidade observada</span><strong id="sli">&mdash;</strong><small>SLI na janela selecionada</small></article><article><span>Lat&ecirc;ncia P95</span><strong id="latency">&mdash;</strong><small>Histograma dos spans &middot; servidor</small></article><article><span>Consumo do or&ccedil;amento</span><strong id="burn">&mdash;</strong><small>Taxa de queima relativa &agrave; meta</small></article></section>
+    <div class="grid"><section class="panel" id="reliability"><p class="eyebrow">CONFIABILIDADE</p><h2>Uma meta. Evid&ecirc;ncias claras.</h2><label for="target">Meta de sucesso</label><select id="target"><option value="0.99">99%</option><option value="0.999" selected>99,9%</option><option value="0.9999">99,99%</option></select><p id="budget">Aguardando observa&ccedil;&otilde;es.</p><p class="muted">O or&ccedil;amento corresponde somente a esta janela. Sem tr&aacute;fego, o estado &eacute; &ldquo;sem dados&rdquo;, n&atilde;o &ldquo;saud&aacute;vel&rdquo;.</p><h3>Servi&ccedil;os descobertos</h3><div class="table-scroll"><table><thead><tr><th>Servi&ccedil;o</th><th>Requisi&ccedil;&otilde;es estimadas</th></tr></thead><tbody id="services-body"></tbody></table></div></section>
+    <section class="panel"><p class="eyebrow">DIAGN&Oacute;STICO EXPLIC&Aacute;VEL</p><h2>Antes da conclus&atilde;o, os fatos.</h2><span class="badge">Motor de regras &middot; sem LLM</span><div id="findings"><p class="muted">Nenhuma an&aacute;lise executada.</p></div><p class="muted">Este motor identifica sintomas. N&atilde;o confirma causa raiz nem executa remedia&ccedil;&otilde;es.</p></section></div>
+    <section class="panel" id="topology"><p class="eyebrow">TOPOLOGIA</p><h2>Conex&otilde;es observadas</h2><p class="muted">Rela&ccedil;&otilde;es client/server do conector servicegraph. Aus&ecirc;ncia de conex&otilde;es pode indicar falta de instrumenta&ccedil;&atilde;o.</p><div id="edges">Aguardando dados.</div></section>
+    <section class="panel" id="evidence"><p class="eyebrow">RASTREABILIDADE</p><h2>Consulte a origem de cada indicador.</h2><div id="queries">As consultas PromQL e seus hor&aacute;rios aparecer&atilde;o aqui.</div></section>
+    <footer>Vimaka Sistemas Inteligentes &middot; Sem agentes pagos &middot; Sem remedia&ccedil;&atilde;o autom&aacute;tica</footer>
+  </main>
+</body>
+</html>

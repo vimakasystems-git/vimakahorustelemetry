@@ -1,0 +1,30 @@
+# Run a separate native Collector on the authorized Linux host.
+# Do not mount the host root into the default gateway container.
+receivers:
+  hostmetrics:
+    collection_interval: 30s
+    scrapers:
+      cpu: {}
+      memory: {}
+      disk: {}
+      filesystem: {}
+      load: {}
+      network: {}
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 128
+  resourcedetection:
+    detectors: [system]
+    override: false
+  batch: {}
+exporters:
+  otlphttp:
+    endpoint: ${env:OTEL_EXPORTER_OTLP_ENDPOINT}
+    # Use HTTPS and trusted certificates for any non-local environment.
+service:
+  pipelines:
+    metrics:
+      receivers: [hostmetrics]
+      processors: [memory_limiter, resourcedetection, batch]
+      exporters: [otlphttp]
