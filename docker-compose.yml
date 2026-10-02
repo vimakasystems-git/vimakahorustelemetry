@@ -13,7 +13,7 @@ services:
 
   prometheus:
     image: prom/prometheus:v3.6.0
-    command: ["--config.file=/etc/prometheus/prometheus.yml", "--web.enable-otlp-receiver"]
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--web.enable-otlp-receiver", "--web.enable-remote-write-receiver"]
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports: ["9090:9090"]
